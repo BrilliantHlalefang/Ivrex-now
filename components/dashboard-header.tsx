@@ -15,15 +15,12 @@ import {
 import {
   LineChart,
   Menu,
-  Moon,
   Package2,
   Settings,
   Signal,
-  Sun,
   Users,
   LogOut,
 } from "lucide-react"
-import { useTheme } from "next-themes"
 import { signOut } from "next-auth/react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useToast } from "@/components/ui/use-toast"
@@ -35,7 +32,7 @@ interface DashboardHeaderProps {
 }
 
 export default function DashboardHeader({ user }: DashboardHeaderProps) {
-  const { setTheme, theme } = useTheme()
+
   const { toggleSidebar } = useSidebar()
   const { toast } = useToast()
 
@@ -69,14 +66,7 @@ export default function DashboardHeader({ user }: DashboardHeaderProps) {
     }
   }
 
-  const handleThemeChange = () => {
-    const newTheme = theme === "dark" ? "light" : "dark"
-    setTheme(newTheme)
-    toast({
-      title: `Switched to ${newTheme} mode`,
-      description: `Interface theme changed to ${newTheme} mode.`,
-    })
-  }
+
 
   // Get user initials for avatar
   const getInitials = (name?: string) => {
@@ -96,12 +86,6 @@ export default function DashboardHeader({ user }: DashboardHeaderProps) {
       <div className="relative ml-auto flex-1 md:grow-0">
         <div className="flex items-center gap-4">
           <NotificationPanel />
-          
-          <Button variant="ghost" size="icon" onClick={handleThemeChange}>
-            <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            <span className="sr-only">Toggle theme</span>
-          </Button>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

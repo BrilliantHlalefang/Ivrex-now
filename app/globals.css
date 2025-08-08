@@ -4,24 +4,25 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 15%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 15%;
+    /* Force dark theme variables for all cases */
+    --background: 0 0% 15%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 98%;
     --primary: 41 48% 56%;
     --primary-foreground: 0 0% 15%;
     --secondary: 34 41% 32%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    --muted: 34 41% 32%;
+    --muted-foreground: 0 0% 63.9%;
     --accent: 34 41% 32%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
+    --border: 34 41% 32%;
+    --input: 34 41% 32%;
     --ring: 41 48% 56%;
     --radius: 0.5rem;
 
@@ -73,7 +74,16 @@
   * {
     @apply border-border;
   }
+  
+  /* Force dark theme on html and body */
+  html {
+    @apply dark;
+  }
+  
   body {
     @apply bg-background text-foreground;
+    /* Force dark background even if theme fails */
+    background-color: hsl(0 0% 15%) !important;
+    color: hsl(0 0% 98%) !important;
   }
 }
